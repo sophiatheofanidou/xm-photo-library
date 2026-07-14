@@ -1,1 +1,15 @@
-<h1>Favorites</h1>
+<section class="favorites-page">
+  @if (favorites$ | async; as favorites) {
+    @if (favorites.length > 0) {
+      <app-photo-grid
+        [photos]="favorites"
+        (photoSelected)="openPhoto($event)">
+      </app-photo-grid>
+    } @else {
+      <div class="favorites-page__empty">
+        <h1>No favorite photos yet</h1>
+        <p>Select photos from the Photos page to add them to your library.</p>
+      </div>
+    }
+  }
+</section>
