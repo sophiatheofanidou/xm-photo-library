@@ -1,1 +1,28 @@
-<h1>Photo details</h1>
+<section class="photo-detail-page">
+  @if (photo) {
+    <div class="photo-detail-page__content">
+      <img
+        class="photo-detail-page__image"
+        [src]="fullSizePhotoUrl"
+        [alt]="photo.alt">
+
+      <button
+        mat-flat-button
+        type="button"
+        (click)="removeFromFavorites()">
+        Remove from favorites
+      </button>
+    </div>
+  } @else {
+    <div class="photo-detail-page__not-found">
+      <h1>Photo not found</h1>
+      <p>This photo is not available in your Favorites library.</p>
+
+      <a
+        mat-button
+        routerLink="/favorites">
+        Back to Favorites
+      </a>
+    </div>
+  }
+</section>
