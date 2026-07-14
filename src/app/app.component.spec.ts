@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -7,7 +9,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MatButtonModule,
+        MatToolbarModule
+      ],
       declarations: [
         AppComponent,
         HeaderComponent

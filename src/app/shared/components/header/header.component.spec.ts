@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header.component';
 
@@ -8,9 +11,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        MatButtonModule,
+        MatToolbarModule
+      ],
       declarations: [HeaderComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;

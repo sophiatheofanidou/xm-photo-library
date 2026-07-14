@@ -1,0 +1,18 @@
+.header {
+  justify-content: center;
+}
+
+.header__navigation {
+  display: flex;
+  gap: 1rem;
+}
+
+.header__link {
+  border-radius: 0;
+  opacity: 0.75;
+}
+
+.header__link--active {
+  border-bottom: 2px solid currentColor;
+  opacity: 1;
+}

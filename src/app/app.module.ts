@@ -8,6 +8,9 @@ import { PhotosPageComponent } from './features/photos/photos-page/photos-page.c
 import { FavoritesPageComponent } from './features/favorites/favorites-page/favorites-page.component';
 import { PhotoDetailPageComponent } from './features/photo-detail/photo-detail-page/photo-detail-page.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,9 @@ import { PhotoDetailPageComponent } from './features/photo-detail/photo-detail-p
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
