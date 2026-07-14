@@ -10,6 +10,8 @@ import { PhotoDetailPageComponent } from './features/photo-detail/photo-detail-p
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PhotoGridComponent } from './shared/components/photo-grid/photo-grid.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HeaderComponent,
     PhotosPageComponent,
     FavoritesPageComponent,
-    PhotoDetailPageComponent
+    PhotoDetailPageComponent,
+    PhotoGridComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

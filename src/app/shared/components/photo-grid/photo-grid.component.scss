@@ -1,0 +1,33 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.photo-grid__item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.photo-grid__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  transition: transform 150ms ease;
+}
+
+.photo-grid__item:hover .photo-grid__image,
+.photo-grid__item:focus-visible .photo-grid__image {
+  transform: scale(1.02);
+}
+
+.photo-grid__item:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}

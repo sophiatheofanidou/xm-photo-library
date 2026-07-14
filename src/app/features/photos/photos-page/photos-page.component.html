@@ -1,1 +1,15 @@
-<h1>Photos</h1>
+<section class="photos-page">
+  <app-photo-grid
+    [photos]="photos"
+    (photoSelected)="addToFavorites($event)">
+  </app-photo-grid>
+
+  @if (isLoading) {
+    <div class="photos-page__loader">
+      <mat-spinner
+        diameter="40"
+        aria-label="Loading photos">
+      </mat-spinner>
+    </div>
+  }
+</section>
