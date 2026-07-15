@@ -1,27 +1,59 @@
-# GalleryTemplate
+# XM Photo Library Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+A simple Angular application that implements a random photo library with infinite scrolling and a Favorites collection.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Infinite random photo stream
+- Custom infinite scroll (without external libraries)
+- Favorites page with Local Storage persistence
+- Single photo details page
+- Remove photo from favorites
+- Angular Material UI
+- Unit tests
 
-## Code scaffolding
+## Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js 22+
+- npm 10+
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+```
 
-## Running unit tests
+## Run the application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm start
+```
 
-## Running end-to-end tests
+The application will be available at:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+http://localhost:4200
+```
 
-## Further help
+## Run unit tests
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm test
+```
+
+## Production build
+
+```bash
+npm run build
+```
+
+## Technologies
+
+- Angular 22
+- TypeScript
+- SCSS
+- Angular Material
+- Angular Router
+- RxJS
+- Local Storage
+- Native IntersectionObserver
