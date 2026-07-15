@@ -4,6 +4,12 @@
     (photoSelected)="addToFavorites($event)">
   </app-photo-grid>
 
+  <div
+    appInfiniteScroll
+    class="photos-page__sentinel"
+    (visible)="loadMorePhotos()">
+  </div>
+
   @if (isLoading) {
     <div class="photos-page__loader">
       <mat-spinner

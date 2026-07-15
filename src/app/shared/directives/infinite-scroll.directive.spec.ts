@@ -1,10 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed
+} from '@angular/core/testing';
+import {
+  Directive,
+  EventEmitter,
+  Output
+} from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { of } from 'rxjs';
 
-import { Photo } from '../../../core/models/photo.model';
-import { FavoritesService } from '../../../core/services/favorites.service';
-import { PhotoService } from '../../../core/services/photo.service';
-import { PhotosPageComponent } from '../../../features/photos/photos-page/photos-page.component';
+import { Photo } from '../../core/models/photo.model';
+import { FavoritesService } from '../../core/services/favorites.service';
+import { PhotoService } from '../../core/services/photo.service';
+import { PhotoGridComponent } from '../../shared/components/photo-grid/photo-grid.component';
+import { PhotosPageComponent } from '../../features/photos/photos-page/photos-page.component';
+
+@Directive({
+  selector: '[appInfiniteScroll]',
+  standalone: false
+})
+class InfiniteScrollStubDirective {
+  @Output() visible = new EventEmitter<void>();
+}
 
 describe('PhotosPageComponent', () => {
   let component: PhotosPageComponent;
@@ -39,7 +57,14 @@ describe('PhotosPageComponent', () => {
     photoService.getPhotos.and.returnValue(of(photos));
 
     await TestBed.configureTestingModule({
-      declarations: [PhotosPageComponent],
+      imports: [
+        MatProgressSpinnerModule
+      ],
+      declarations: [
+        PhotosPageComponent,
+        PhotoGridComponent,
+        InfiniteScrollStubDirective
+      ],
       providers: [
         {
           provide: PhotoService,
@@ -50,28 +75,27 @@ describe('PhotosPageComponent', () => {
           useValue: favoritesService
         }
       ]
-    })
-      .overrideComponent(PhotosPageComponent, {
-        set: {
-          template: ''
-        }
-      })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PhotosPageComponent);
     component = fixture.componentInstance;
 
-    spyOn<any>(component, 'ensureScrollablePage');
+    spyOn<any>(
+      component,
+      'ensureScrollablePage'
+    );
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load a batch of photos', () => {
-    component.loadMorePhotos();
+  it('should load the initial batch of photos', () => {
+    fixture.detectChanges();
 
-    expect(photoService.getPhotos).toHaveBeenCalledOnceWith(12);
+    expect(photoService.getPhotos)
+      .toHaveBeenCalledOnceWith(12);
+
     expect(component.photos).toEqual(photos);
     expect(component.isLoading).toBeFalse();
   });

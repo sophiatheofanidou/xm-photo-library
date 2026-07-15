@@ -37,6 +37,7 @@ export class PhotosPageComponent implements OnInit {
     }
 
     this.isLoading = true;
+    this.changeDetectorRef.markForCheck();
 
     this.photoService
       .getPhotos(this.batchSize)
@@ -50,11 +51,24 @@ export class PhotosPageComponent implements OnInit {
         next: photos => {
           this.photos = [...this.photos, ...photos];
           this.changeDetectorRef.markForCheck();
+
+          this.ensureScrollablePage();
         }
       });
   }
 
   addToFavorites(photo: Photo): void {
     this.favoritesService.addFavorite(photo);
+  }
+
+  private ensureScrollablePage(): void {
+    queueMicrotask(() => {
+      const pageHasScrollbar =
+        document.documentElement.scrollHeight > window.innerHeight;
+
+      if (!pageHasScrollbar) {
+        this.loadMorePhotos();
+      }
+    });
   }
 }

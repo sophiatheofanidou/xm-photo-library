@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PhotoGridComponent } from './shared/components/photo-grid/photo-grid.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfiniteScrollDirective } from './shared/directives/infinite-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     PhotosPageComponent,
     FavoritesPageComponent,
     PhotoDetailPageComponent,
-    PhotoGridComponent
+    PhotoGridComponent,
+    InfiniteScrollDirective
   ],
   imports: [
     BrowserModule,
